@@ -1,0 +1,81 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+@media (prefers-color-scheme: dark) { 
+   {
+    --background-color: #1F2227;
+    --text-color: #c0c0c0;
+    --hilight-color: #8db4d6;
+  }
+
+/* CONTAINER */
+.highcharts-container1 {
+  font-family: "Lato";
+}
+
+.highcharts-background {
+  fill: #223;
+}
+
+
+/* LABELS */
+.highcharts-title {
+  fill: #fff;
+ 
+}
+
+.highcharts-legend-item text {
+  fill: #ccc;
+ 
+}
+
+.highcharts-axis text {
+  fill: #aaa;
+}
+
+.highcharts-axis-labels text {
+  fill: #ccc;
+}
+
+
+/* AXES & GRID */
+.highcharts-xaxis path {
+  stroke: #444;
+}
+
+.highcharts-grid path {
+  stroke: #444;
+  stroke-dasharray: 1 1;
+}
+
+
+/* SERIES */
+.highcharts-graph {
+  stroke-width: 1.5px;
+}
+
+
+
+body {
+  background-color: var(--background-color);
+}
+.highcharts-background {
+  fill: var(--background-color);
+}
+.highcharts-container text {
+  fill: var(--text-color);
+}
+.highcharts-subtitle,
+.highcharts-credits,
+.highcharts-axis-title {
+  fill-opacity: 0.7;
+}
+.highcharts-grid-line {
+  stroke: var(--text-color);
+  stroke-opacity: 0.2;
+}
+.highcharts-tooltip-box {
+  fill: var(--background-color);
+}
+.highcharts-column-series rect.highcharts-point {
+  stroke: var(--background-color);
+}

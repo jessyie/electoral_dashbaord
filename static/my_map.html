@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+     
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+ 
+
+</head>
+<body>
+    
+    
+
+<script type="text/javascript">
+window.onload = function() {
+    var updateLayerVisibility = function() {
+        var mapZoom = map_name_1.getZoom();
+        
+        // Check the zoom level and show/hide the ps_group layer
+        if (mapZoom >= 6) {
+            map_name_1.addLayer(feature_group_sub_group_4e7634126027285475f177d911e25d0c);
+        } else {
+            map_name_1.removeLayer(feature_group_sub_group_4e7634126027285475f177d911e25d0c);
+        }
+    }
+    
+    updateLayerVisibility();
+    
+    map_name_1.on("zoomend", updateLayerVisibility);
+}
+</script>
+    
+<div style="position: absolute; top: 103px; left: 10px; z-index: 1000;">
+    <button onclick="window.location.href=window.location.href" style="border-style: solid; border-radius: 4px; background-color: #6e7785; color: #d68d33; font-weight: bold;">Reset Map</button>
+</div>
+    
+            <div class="folium-map" id="map_name_1" ></div>
+        
+</body>
+
+</html>

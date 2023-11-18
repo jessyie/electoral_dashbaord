@@ -1,0 +1,147 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid pt-3 btn-secondary">
+    <div class="row">
+        <div class="col-md-3" id="chart-container">
+            <select class="btn-dark" style="font-size: 20px; font-weight: bold; border-style: solid; border-radius: 4px;">
+                <option disabled selected>PARLIAMENT TOTAL VOTES</option>
+                <option id='parliamentTotal' disabled style="font-size: 40px; font-weight: bold; color: #d68d33;">{{tSum | safe}} : VALID VOTES</option>
+            </select>
+            <div id="container1" style="border-style: outset; border-width: 5px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>
+
+        </div>
+        <div class="col-md-3" id="chart-container">
+            <select id='censusSelection' method="post" onchange="changeChart_DistrictCensus()" type="submit" class=btn-dark name='regionNames' action='selectCensus'
+                    style="border-style: solid; border-radius: 3px; padding: 4px; font-size: 17px; margin-right: 90px;">
+                        <option id='censusOption' selected value="">POPULATION DEMOGRAPHICS</option>
+                        {% for gH in dfGroupH %}
+                        <option >{{gH}}</option>
+                        {% endfor %}
+
+            </select>
+            <div id="container4" style="border-style: outset; border-width: 5px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>
+
+        </div>
+        <div class="col-md-3" id="chart-container">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" style=" margin-left: -1086px;margin-top: 385px;width:1185px">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ABOUT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="buta">
+                      <div class="modal-body">
+                        <div class="fontain">
+                            <div class="box">
+                                <h2>SERVICE</h2>
+                                <h3>Electoral Dashboard</h3>
+                                <p>Our Electoral Dashboard is a comprehensive and intuitive platform designed to provide real-time insights into electoral data, ensuring transparency and informed decision-making during elections. It combines advanced data visualization techniques, geographical mapping, and demographic analysis to offer a holistic view of electoral processes.</p>
+                                <h3>Data Source</h3>
+                                <p>Data used and presented on this Website came from a variety of sources. These sources are duly acknowledged in the following.</p>
+                                <ul><span style="font-weight: bold; color: black;">*</span>OpenStreetMap (OSM): <a href="https://www.openstreetmap.org">https://www.openstreetmap.org</a></ul> 
+                                <ul><span style="font-weight: bold; color: black;">*</span>Ghana Electoral Commission: <a href="https://ec.gov.gh/">https://ec.gov.gh/</a></ul>
+                                <ul><span style="font-weight: bold; color: black;">*</span>Ghana Statistical Service: <a href="https://www.statsghana.gov.gh/">https://www.statsghana.gov.gh/</a></ul>   
+                            </div>
+                            <div class="box">
+                                <h2>DISCLAIMER</h2>
+                                <p>The information provided by us on this Website is for general information purposes only. All information on this website is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, validity, reliability, availability or completeness of any information on this website. This Website is solely for informational purposes and does not represent a contract. Any liabilities or warranties are thus excluded on the part of any contractual party named on this Website and/or any employees or bodies thereof. No liability or warranty will be assumed related to the future fulfillment or non-fulfillment of specific occurrences, expectations, assumptions, etc. The entire risk as to the quality and performance of this Website is with You. Should any service or content prove defective in any respect, You (not any Contributor) assume the cost of any necessary servicing, repair, or correction. Your access to and use of the Services or any Content is at your own risk. You understand and agree that the Services and Content are provided to you on an ‘as is’ and ‘as available’ basis. Without limiting the foregoing, to the full extent permitted by law, this Website disclaims all warranties, express or implied, of merchantability, fitness for a particular purpose, or non-infringement.</p>
+                                <p>© 2023 Electoral Dashboard – Ghana</p>    
+                            </div>
+                            <div class="box">
+                                <h2>TEAM</h2>
+                                <h3 style="font-weight: bold; color: black;">SUPERVISER</h3>
+                                <h3><span>Prof. Gift Dumedah</span></h3>
+                                <p><span style="font-weight: bold;">INSTITUTION : </span>Kwame Nkrumah University of Science and Technology</p>
+                                <p><span style="font-weight: bold;">TITLE : </span>Associate Professor</p>
+                                <p><span style="font-weight: bold;">DEPARTMENT : </span>Geography and Rural Development</p>
+                                <p><span style="font-weight: bold;">EMAIL : </span>dgiftman@hotmail.com</p>
+                                <h3 style="font-weight: bold; color: black;">DEVELOPER</h3>
+                                <h3><span>Ahado Kwame Jesse</span></h3>
+                                <p><span style="font-weight: bold;">INSTITUTION : </span>Kwame Nkrumah University of Science and Technology</p>
+                                <p><span style="font-weight: bold;">POSITION : </span>Teaching and Research Assistant</p>
+                                <p><span style="font-weight: bold;">DEPARTMENT : </span>Geomatic engineering</p>
+                                <p><span style="font-weight: bold;">EMAIL : </span>jessedabankah@gmail.com</p>
+                                <p><span style="font-weight: bold;">PHONE : </span>+233504116594</p>   
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer" style="background-color: #c98d51;">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="map-container" style="border-style: ridge; border-width: 2px; border-width: 5px; padding: 0px; width: 398px; height: 441px; margin-left: -21px">
+                <div class="wrapper">
+                    <div class="folium-map" id="map_name_1" style="width:100%; height: 431px"></div>
+
+                    <div style="position: absolute; top: 150px; left: 10px; z-index: 1000;">
+                    <button onclick="resetMap()" style="border-style: solid; border-radius: 4px; background-color: #6e7785; color: #d68d33; font-weight: bold;">Reset Map</button> 
+                    </div>
+                    <div id="watermark-container" style="position: absolute; top: 350px; left: 120px; z-index: 1000;">
+                        <p class="watermark" style="opacity: 1; color: #d68d33;">Geography @ KNUST</p>
+                    </div>
+                </div>
+            </div>
+                                  
+        </div>
+
+        <div class="col-md-3" id="chart-container">
+           <select class="btn-dark" style="font-size: 20px; font-weight: bold; border-style: solid; border-radius: 4px; margin-left: 40px">
+                <option disabled selected>PRESIDENTIAL TOTAL VOTES</option>
+                <option id='presidentialTotal' disabled style="font-size: 40px; font-weight: bold; color: #d68d33;">{{tSum2 | safe}} : VALID VOTES</option>
+            </select>
+            <div id="container1b" style="border-style: inset; border-width: 5px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-3" id="chart-container">
+            <div id="container2" style="border-style: outset; border-width: 5px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>
+
+        </div>
+        <div class="col-md-3" id="chart-container">
+            <div id="container3" style="border-right-style: outset; border-width: 2px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>   
+
+        </div>
+        <div class="col-md-3" id="chart-container">
+            <div id="container3b" style="border-left-style: inset; border-width: 2px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>   
+
+        </div>
+        <div class="col-md-3" id="chart-container">
+            <div id="container2b" style="border-style: inset; border-width: 5px;"></div>
+            <div id="watermark-container">
+                <p class="watermark">Geography @ KNUST</p>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
