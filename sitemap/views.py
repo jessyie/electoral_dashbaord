@@ -243,16 +243,6 @@ def initialise_chart(year = '2020', region='Ashanti'):
     tSumCAP = tSumCP.values.tolist()
     tSumDAP = tSumDP.values.tolist()
 
-    dfp = df_grouped3
-    json_records = dfp.reset_index().to_json(orient = 'records')
-    arr = []
-    arr = json.loads(json_records)
-
-    dfp2 = df_grouped4
-    json_records2 = dfp2.reset_index().to_json(orient = 'records')
-    arr2 = []
-    arr2 = json.loads(json_records2)
-
      #________________________________
 
     #// POPULATION DATA PROCESSING//
@@ -320,10 +310,6 @@ def initialise_chart(year = '2020', region='Ashanti'):
     'graph3AX' : graph3AX,
     'graph3BY' : graph3BY,
     'graph3BX' : graph3BX,
-    # 'gapa1AX' : gapa1AX ,
-    'd' : arr,
-    'd2' : arr2,
-    # 'm' : m,
     'tSum2P' : tSum2P,
     'tSumB2P' : tSumB2P,
     'graph1AX2P' : graph1AX2P,
