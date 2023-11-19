@@ -19,246 +19,6 @@ from django.conf import settings
 # Convert WindowsPath object to string
 data_loc_str = str(settings.DATA_LOC)
 
-# Create your views here.
-# GHMap2 = os.path.join(data_loc_str, 'images', 'ghana_regions16.geojson')
-# GHMap = os.path.join(data_loc_str, 'images', 'ghana_regions.geojson')
-# ShpW = os.path.join(data_loc_str, 'images', 'WesternG.geojson')
-# ShpAs = os.path.join(data_loc_str, 'images', 'Ashanti.geojson')
-# ShpAh = os.path.join(data_loc_str, 'images', 'Ahafo.geojson')
-# ShpC = os.path.join(data_loc_str, 'images', 'Central.geojson')
-# ShpE = os.path.join(data_loc_str, 'images', 'Eastern.geojson')
-# ShpGA = os.path.join(data_loc_str, 'images', 'GreaterAccra.geojson')
-# ShpN = os.path.join(data_loc_str, 'images', 'Northern.geojson')
-# ShpUE = os.path.join(data_loc_str, 'images', 'UpperEast.geojson')
-# ShpUW = os.path.join(data_loc_str, 'images', 'UpperWest.geojson')
-# ShpV = os.path.join(data_loc_str, 'images', 'Volta.geojson')
-# ShpWN = os.path.join(data_loc_str, 'images', 'WesternNorth.geojson')
-# ShpS = os.path.join(data_loc_str, 'images', 'Savannah.geojson')
-# ShpNE = os.path.join(data_loc_str, 'images', 'NorthEast.geojson')
-# ShpB = os.path.join(data_loc_str, 'images', 'Bono.geojson')
-# ShpBE = os.path.join(data_loc_str, 'images', 'BonoEast.geojson')
-# ShpO = os.path.join(data_loc_str, 'images', 'Oti.geojson')
-
-
- #//______________________//
-
-    #//  DATA OF MAP CANVAS
-    #//____________________//
-
-
-# m = folium.Map()
-
-# # file_pathB = os.path.join(data_loc_str, 'my_map', 'my_map.html')
-
-# m = folium.Map(location=[6.67461973426974, -1.5654175654494509], zoom_start= 6)
-# folium.Marker(location=[6.67461973426974, -1.5654175654494509], tooltip='Click for more', popup='Geography Department(KNUST)').add_to(m)
-# g = folium.GeoJson(GHMap, name = 'Regions').add_to(m)
-# g2 = folium.GeoJson(GHMap2, name = '16_Regions').add_to(m)
-# ps_group = plugins.FeatureGroupSubGroup(m, name='Polling Stations (PS)')
-# shp1 = folium.GeoJson(
-#     ShpW, name = 'Western ps',
-#     marker=folium.Circle(radius=4, fill_color="orange", fill_opacity=0.4, color="orange", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp2 = folium.GeoJson(
-#     ShpAs, name = 'Ashanti PS',
-#     marker=folium.Circle(radius=4, fill_color="blue", fill_opacity=0.4, color="blue", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp3 = folium.GeoJson(
-#     ShpAh, name = 'Ahafo PS',
-#     marker=folium.Circle(radius=4, fill_color="red", fill_opacity=0.4, color="red", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp4 = folium.GeoJson(
-#     ShpGA, name = 'Greater Accra PS',
-#     marker=folium.Circle(radius=4, fill_color="green", fill_opacity=0.4, color="green", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp5 = folium.GeoJson(
-#     ShpC, name = 'Central PS',
-#     marker=folium.Circle(radius=4, fill_color="purple", fill_opacity=0.4, color="purple", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp6 = folium.GeoJson(
-#     ShpE, name = 'Eastern PS',
-#     marker=folium.Circle(radius=4, fill_color="darkred", fill_opacity=0.4, color="darkred", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp7 = folium.GeoJson(
-#     ShpN, name = 'Northern PS',
-#     marker=folium.Circle(radius=4, fill_color="darkblue", fill_opacity=0.4, color="darkblue", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp8 = folium.GeoJson(
-#     ShpUE, name = 'Upper East PS',
-#     marker=folium.Circle(radius=4, fill_color="black", fill_opacity=0.4, color="black", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp9 = folium.GeoJson(
-#     ShpUW, name = 'Upper West PS',
-#     marker=folium.Circle(radius=4, fill_color="beige", fill_opacity=0.4, color="beige", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp10 = folium.GeoJson(
-#     ShpV, name = 'Volta PS',
-#     marker=folium.Circle(radius=4, fill_color="gray", fill_opacity=0.4, color="gray", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp11 = folium.GeoJson(
-#     ShpS, name = 'Savannah PS',
-#     marker=folium.Circle(radius=4, fill_color="cadetblue", fill_opacity=0.4, color="cadetblue", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp12 = folium.GeoJson(
-#     ShpO, name = 'Oti PS',
-#     marker=folium.Circle(radius=4, fill_color="lightgreen", fill_opacity=0.4, color="lightgreen", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp13 = folium.GeoJson(
-#     ShpWN, name = 'WesternNorth PS',
-#     marker=folium.Circle(radius=4, fill_color="lightgray", fill_opacity=0.4, color="lightgray", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp14 = folium.GeoJson(
-#     ShpB, name = 'Bono PS',
-#     marker=folium.Circle(radius=4, fill_color="pink", fill_opacity=0.4, color="pink", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp15 = folium.GeoJson(
-#     ShpBE, name = 'Bono East PS',
-#     marker=folium.Circle(radius=4, fill_color="pink", fill_opacity=0.4, color="pink", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# shp16 = folium.GeoJson(
-#     ShpNE, name = 'North East PS',
-#     marker=folium.Circle(radius=4, fill_color="darkgreen", fill_opacity=0.4, color="darkgreen", weight=1),
-#     tooltip=folium.GeoJsonTooltip(fields=["PS Name"]),
-#     zoom_on_click=True)
-# ps_group.add_child(shp1)
-# ps_group.add_child(shp2)
-# ps_group.add_child(shp3)
-# ps_group.add_child(shp4)
-# ps_group.add_child(shp5)
-# ps_group.add_child(shp6)
-# ps_group.add_child(shp7)
-# ps_group.add_child(shp8)
-# ps_group.add_child(shp9)
-# ps_group.add_child(shp10)
-# ps_group.add_child(shp11)
-# ps_group.add_child(shp12)
-# ps_group.add_child(shp13)
-# ps_group.add_child(shp14)
-# ps_group.add_child(shp15)
-# ps_group.add_child(shp16)
-
-
-
-# m.add_child(ps_group)
-
-# m._name = "map_name"
-# m._id = "1"
-
-# # Get map variable name in output HTML
-# mapJsVar = m.get_name()
-# psGroupVar = ps_group.get_name()
-# #<button id="reset-button" style="border-style: solid; border-radius: 4px; margin-left: 70px; background-color: #6e7785; color: #d68d33; font-weight: bold; position: absolute; z-index: 100;">RESET MAP</button> 
-# # Inject HTML into the map HTML
-# m.get_root().html.add_child(folium.Element("""
-
-# <script type="text/javascript">
-# window.onload = function() {
-#     var updateLayerVisibility = function() {
-#         var mapZoom = {map_name_1}.getZoom();
-        
-#         // Check the zoom level and show/hide the ps_group layer
-#         if (mapZoom >= 6) {
-#             {map_name_1}.addLayer({ps_group});
-#         } else {
-#             {map_name_1}.removeLayer({ps_group});
-#         }
-#     }
-    
-#     updateLayerVisibility();
-    
-#     {map_name_1}.on("zoomend", updateLayerVisibility);
-# }
-# </script>
-# """.replace("{map_name_1}", mapJsVar).replace("{ps_group}", psGroupVar)))
-
-# reset_button_html = """
-# <div style="position: absolute; top: 103px; left: 10px; z-index: 1000;">
-#     <button onclick="window.location.href=window.location.href" style="border-style: solid; border-radius: 4px; background-color: #6e7785; color: #d68d33; font-weight: bold;">Reset Map</button>
-# </div>
-# """
-
-# # Add the custom HTML button to the map
-# m.get_root().html.add_child(folium.Element(reset_button_html))
-
-
-# # Define a function to reset the map
-# # def reset_map(e):
-# #     m = folium.Map(location=[6.67461973426974, -1.5654175654494509], zoom_start= 6)
-# #     m.fit_bounds(m.get_bounds())
-
-# # mapObj = folium.Map(location=[24.217011233401, 81.0791015625000], zoom_start=5)
-
-# # folium.Marker(location=[24.217011233401, 81.0791015625000],
-# #                 tooltip='center',
-# #                 icon=folium.DivIcon(html="""Hello World""",
-# #                                     class_name="mapText"),
-# #                 ).add_to(mapObj)
-
-# # # get map variable name in output html
-# # mapJsVar = mapObj.get_name()
-
-# # # inject html into the map html
-# # mapObj.get_root().html.add_child(folium.Element("""
-# # <style>
-# # .mapText {
-# #     white-space: nowrap;
-# #     color:red;
-# #     font-size:large
-# # }
-# # </style>
-# # <script type="text/javascript">
-# # windows.onload = function(){
-# #     var sizeFromZoom = function(z){return (0.5*z)+"em"}
-# #     var updateTextSizes = function(){
-# #         var mapzoom = {mapObj}.getZoom();
-# #         var txtSize = sizeFromZoom(mapZoom);
-# #         $(".mapText").css("font-size", txtSize);
-# #     }
-# #     updateTextSizes();
-# #     {mapObj}.on("Zoomend", updateTextSizes);
-# # }
-# # </script>
-
-# # """.replace("{mapObj}", mapJsVar)))
-
-
-# # Add the custom control to the map's root HTML element
-# #m.get_root().html.add_child(folium.Element(reset_html))
-
-# # Add Fullscreen control
-# fullscreen_control = folium.plugins.Fullscreen()
-# m.add_child(fullscreen_control)
-
-# #geocode = folium.GeoJson(ShpW, name = 'Western Electoral Station', zoom_start=20).add_to(m)
-# folium.GeoJsonTooltip(fields=["region"]).add_to(g)
-# folium.GeoJsonTooltip(fields=["region"]).add_to(g2)
-# folium.raster_layers.TileLayer('Stamen Terrain').add_to(m)
-# folium.raster_layers.TileLayer('Stamen Toner').add_to(m)
-# folium.raster_layers.TileLayer('Stamen Watercolor').add_to(m)
-# folium.raster_layers.TileLayer('CartoDB Positron').add_to(m)
-# folium.raster_layers.TileLayer('CartoDB Dark_Matter').add_to(m)
-
-# folium.LayerControl().add_to(m)
-
-
-
-
-# m = m._repr_html_()
 census='Total Pop'
 
 def initialise_chart(year = '2020', region='Ashanti'):
@@ -298,15 +58,6 @@ def initialise_chart(year = '2020', region='Ashanti'):
     #//____________________________//
 
 
-    # gapa = df2[["YEAR", "VALID_VOTES"]]
-    # #gapa['YEAR'] = gapa['YEAR'].apply(pd.to_numeric)
-    # gapa['VALID_VOTES'] = gapa['VALID_VOTES'].replace(',','', regex=True)
-    # gapa['VALID_VOTES'] = gapa['VALID_VOTES'].apply(pd.to_numeric)
-    # gapaSum = gapa.groupby(by=['YEAR'])['VALID_VOTES'].sum().reset_index()
-    # gapa1AX = gapaSum['YEAR'].values.tolist()
-    # gapa1AY = gapaSum['VALID_VOTES']
-
-
     # // Finding the Total VALID_VOTES votes on Parliament (A)
     dfGroupA = dfGroup.loc[:,'VALID_VOTES':'IND4'].replace(',','', regex=True) # Selecting specific columns and getting rid of the commas in the string
     dfGroupA = dfGroupA.apply(pd.to_numeric) # Converting all the string in the columns to integers
@@ -320,7 +71,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     #print(tSum2)
 
     # // Finding the Total sum based on each region for Parliament (B)
-    dfRegions = dfGroup[["REGION", "VALID_VOTES"]]
+    dfRegions = dfGroup[["REGION", "VALID_VOTES"]].copy()
     dfRegions['VALID_VOTES'] = dfRegions['VALID_VOTES'].replace(',','', regex=True)
     dfRegions['VALID_VOTES'] = dfRegions['VALID_VOTES'].astype('int')
     dfRegionsSum = dfRegions.groupby(by=["REGION"])["VALID_VOTES"].sum().reset_index()
@@ -330,7 +81,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     #print(graph1AX)
 
     # // Finding the Total sum based on each region for Presidential (B)
-    dfRegions2 = dfGroup2[["REGION", "VALID_VOTES"]]
+    dfRegions2 = dfGroup2[["REGION", "VALID_VOTES"]].copy()
     dfRegions2['VALID_VOTES'] = dfRegions2['VALID_VOTES'].replace(',','', regex=True)
     dfRegions2['VALID_VOTES'] = dfRegions2['VALID_VOTES'].astype('int')
     dfRegionsSum2 = dfRegions2.groupby(by=["REGION"])["VALID_VOTES"].sum().reset_index()
@@ -396,7 +147,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     #print(tSum2R)
 
      # // Have a column holding the sum operations of each constituency based on each region(Ashanti)Parliament for both offices (B)
-    dfConst = dfGroupNew1[["CONSTITUENCY", "VALID_VOTES"]]
+    dfConst = dfGroupNew1[["CONSTITUENCY", "VALID_VOTES"]].copy()
     dfConst['VALID_VOTES'] = dfConst['VALID_VOTES'].replace(',','', regex=True)
     dfConst['VALID_VOTES'] = dfConst['VALID_VOTES'].astype('int')
     graphSub1AX = dfConst['CONSTITUENCY'].values.tolist()
@@ -405,7 +156,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     
     
     # // Have a column holding the sum operations of each constituency based on each region(Ashanti) Presidential for both offices (B)
-    dfConst1B = dfGroupNew1B[["CONSTITUENCY", "VALID_VOTES"]]
+    dfConst1B = dfGroupNew1B[["CONSTITUENCY", "VALID_VOTES"]].copy()
     dfConst1B['VALID_VOTES'] = dfConst1B['VALID_VOTES'].replace(',','', regex=True)
     dfConst1B['VALID_VOTES'] = dfConst1B['VALID_VOTES'].astype('int')
     graphSub1BX = dfConst1B['CONSTITUENCY'].values.tolist()
@@ -509,7 +260,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     #_______________________________
 
    # // Finding the Total Pop in relation to the Regions
-    dfGroupA2P = df3[["Region", census]] # Selecting specific columns and getting rid of the commas in the string
+    dfGroupA2P = df3[["Region", census]].copy() # Selecting specific columns and getting rid of the commas in the string
     dfGroupA2P[census] = dfGroupA2P[census].astype('float') # Converting all the string in the columns to integers
     tSum2P = dfGroupA2P[census].values.sum() # Sum operation on a specific column
     dfContinentSum2P = dfGroupA2P.groupby(by=["Region"])[census].sum().reset_index()
@@ -517,7 +268,7 @@ def initialise_chart(year = '2020', region='Ashanti'):
     graph1AY2P = dfContinentSum2P[census]
 
     # // Finding the Total Pop in relation to the Districts
-    dfGroupB2P = dfGroup2P[["Constituency", census]] # Selecting specific columns and getting rid of the commas in the string
+    dfGroupB2P = dfGroup2P[["Constituency", census]].copy() # Selecting specific columns and getting rid of the commas in the string
     dfGroupB2P[census] = dfGroupB2P[census].astype('float') # Converting all the string in the columns to integers
     tSumB2P = dfGroupB2P[census].values.sum() # Sum operation on a specific column
     dfContinentSumB2P = dfGroupB2P.groupby(by=["Constituency"])[census].sum().reset_index()
@@ -591,14 +342,6 @@ def map(request):
     # data['m'] = m
     return render(request, 'map.html', data)
 
-# def highlight_region(selected_region, geojson_layer):
-#     for feature in geojson_layer.data['features']:
-#         region_name = feature['properties']['region']
-#         if region_name == selected_region:
-#             feature['properties']['style'] = {'fillColor': 'yellow', 'fillOpacity': 0.6}
-#         else:
-#             feature['properties']['style'] = {'fillOpacity': 0.2}
-#     geojson_layer.style_function = lambda feature: feature['properties']['style']
 
 def update_charts(request):
     
@@ -630,9 +373,6 @@ def update_charts(request):
     else:
         data = initialise_chart(selected_year, selected_region)
 
-    
-        # highlighted_region_data = highlight_region(selected_region, g)  # Assuming 'g' is your GeoJSON layer
-        # data['highlighted_region'] = highlighted_region_data
     return JsonResponse(data)
 
 
@@ -657,7 +397,7 @@ def selectCensus(request):
     #_______________________________
 
    # // Finding the Total Pop in relation to the Regions
-    dfGroupA2P = df3[["Region", census]] # Selecting specific columns and getting rid of the commas in the string
+    dfGroupA2P = df3[["Region", census]].copy() # Selecting specific columns and getting rid of the commas in the string
     dfGroupA2P[census] = dfGroupA2P[census].astype('float') # Converting all the string in the columns to integers
     tSum2P = dfGroupA2P[census].values.sum() # Sum operation on a specific column
     dfContinentSum2P = dfGroupA2P.groupby(by=["Region"])[census].sum().reset_index()
@@ -665,7 +405,7 @@ def selectCensus(request):
     graph1AY2P = dfContinentSum2P[census]
 
     # // Finding the Total Pop in relation to the Districts
-    dfGroupB2P = dfGroup2P[["Constituency", census]] # Selecting specific columns and getting rid of the commas in the string
+    dfGroupB2P = dfGroup2P[["Constituency", census]].copy() # Selecting specific columns and getting rid of the commas in the string
     dfGroupB2P[census] = dfGroupB2P[census].astype('float') # Converting all the string in the columns to integers
     tSumB2P = dfGroupB2P[census].values.sum() # Sum operation on a specific column
     dfContinentSumB2P = dfGroupB2P.groupby(by=["Constituency"])[census].sum().reset_index()
@@ -697,33 +437,4 @@ def selectCensus(request):
     }
 
     return JsonResponse(context)
-
-# def about(request):
-#    context = {
-
-#    }
-
-#    return render(request, 'index.html', context)
-
-
-
-    
-# def reset_map(request):
-#     selected_year = request.GET.get("year")
-    
-#     selected_region = request.GET.get("region")
-    
-#     if selected_year in ["2008", "2008_Re-election", "2012", "2016"]:
-#         geojson_layer = g
-#     else:
-#         geojson_layer = g2
-    
-#     highlight_region(selected_region, geojson_layer)  # Update the GeoJSON layer styling
-    
-#     # Get the GeoJSON data for the highlighted region layer
-#     highlighted_geojson_data = geojson_layer.to_dict()
-    
-#     return JsonResponse({"highlighted_geojson_data": highlighted_geojson_data})
-
-
 
