@@ -350,6 +350,9 @@ def update_charts(request):
     elif selected_year == "2020":
         csv_path = os.path.join(data_loc_str, 'EDATA', '2020.csv')
         csv_path2 = os.path.join(data_loc_str, 'EDATA', 'District_pop_demographics2020.csv')
+    elif selected_year == "2024":
+        csv_path = os.path.join(data_loc_str, 'EDATA', '2024.csv')
+        csv_path2 = os.path.join(data_loc_str, 'EDATA', 'District_pop_demographics2024.csv')
     else:
         return JsonResponse({"error": "Invalid selection."})
 

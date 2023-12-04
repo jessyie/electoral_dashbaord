@@ -240,7 +240,12 @@ function updateCharts(selectedYear, region) {
         }
       },
       xAxis: {
-        categories: categories
+        categories: categories,
+        min: 0,
+        max: 10,
+        scrollbar: {
+          enabled: true
+        },
       },
       yAxis: {
         title: {
@@ -290,7 +295,12 @@ function updateCharts(selectedYear, region) {
         }
       },
       xAxis: {
-        categories: categories2
+        categories: categories2,
+        min: 0,
+        max: 10,
+        scrollbar: {
+          enabled: true
+        },
       },
       yAxis: {
         title: {

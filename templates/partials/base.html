@@ -55,29 +55,27 @@
 
 </head>
 
-<body style="width: fit-content;">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand item1" style="font-size: 20px; margin-right: 10px;" href="#">PARLIAMENT</a>
+<body>
+  <nav class="navbar navbar-expand-md na navbar-dark bg-dark fixed-top" id="bar1">
+    <div class="container-fluid" id="bar2">
+      <a class="navbar-brand item1" id="nano_1" href="#">PARLIAMENT</a>
 
-      <select id='regionSelection' onchange='changeChartRegion()' method="post" type="submit" class=btn-secondary name='regionNames'
-        style="border-style: solid; border-radius: 3px; padding: 4px; font-size: 17px;">
+      <select id='regionSelection' onchange='changeChartRegion()' method="post" type="submit" class=btn-secondary name='regionNames'>
 
-        <option id='regionOption' selected value="">REGIONS</option>
+        <option id='regionOption' selected value="">Regions</option>
         {% for ga in graph1BX %}
         <option >{{ga}}</option>
         {% endfor %}
         
       </select>
 
-      <a class="navbar-brand item2" href="#"
-        style="border-left-style: inset; border-left-width: 5px; border-right-style: outset; border-right-width: 5px; padding-left: 10px; padding-right: 10px; margin-left: 7px;">
-        <h1><span style="font-size: 45px;">ELECTORAL DASHBOARD</span> | <span style="font-size: 25px; font-style: italic;">REPUBLIC OF GHANA</span></h1>
+      <a class="navbar-brand item2" id="title_1" href="#">
+        <h1 class="title_1A"><span class="title_1B">ELECTORAL DASHBOARD</span><span class="title_1C">|</span><span class="title_1D">REPUBLIC OF GHANA</span></h1>
       </a>
 
-      <select id='yearSelection' onchange="changeChartYear()" class=btn-secondary
-        style="border-style: solid; border-radius: 3px; padding: 6px; font-size: 16px;">
-        <option selected value="">YEARS</option>
+      <select id='yearSelection' onchange="changeChartYear()" class=btn-secondary>
+        <option selected value="">Years</option>
+        <option value="2024">2024</option>
         <option value="2020">2020</option>
         <option value="2016">2016</option>
         <option value="2012">2012</option>
@@ -86,10 +84,10 @@
              
       </select>
       <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="font-size: 10px; margin-left: 80px; border-style: solid; border-radius: 20px; background-color: #445063; border-width: 1px; padding: 8px">
+        <button type="button" class="btn btn-primary" id="but1" data-toggle="modal" data-target="#exampleModal">
           ABOUT
         </button>
-        <a class="navbar-brand item3" style="font-size: 20px; margin-bottom: 45px;" href="#">PRESIDENTIAL</a>
+        <a class="navbar-brand item3" id="nano_2" href="#">PRESIDENTIAL</a>
       </div>
       
 
@@ -344,7 +342,10 @@ window.onload = function() {
       },
       title: {
         text: 'Total Valid Votes Per Region (Parliament)',
-        align: 'left'
+        align: 'left',
+        style: {
+          fontSize: '13px'
+        }
       },
 
       xAxis: {
@@ -452,7 +453,7 @@ window.onload = function() {
         enabled: false
       },
       series: [{
-        name: 'Valid Votes',
+        name: 'Data',
         data: {{ graph1AY | safe}}
       }]
     });
@@ -468,7 +469,10 @@ window.onload = function() {
       },
       title: {
         text: 'Total Valid Votes Per Region (Presidential)',
-        align: 'left'
+        align: 'left',
+        style: {
+          fontSize: '13px'
+        }
       },
 
       xAxis: {
@@ -576,7 +580,7 @@ window.onload = function() {
         enabled: false
       },
       series: [{
-        name: 'Valid Votes',
+        name: 'Data',
         data: {{ graph1BY | safe}},
         color: '#f0a754'
       }]
@@ -603,7 +607,7 @@ window.onload = function() {
         text: 'Total Valid Votes Per Political Party (Parliament)',
         align: 'left',
         style: {
-          fontSize: '17px',
+          fontSize: '13px',
           fontWeight: 'bold'
         }
       },
@@ -692,7 +696,7 @@ window.onload = function() {
         text: 'Total Valid Votes Per Political Party (Presidential)',
         align: 'left',
         style: {
-          fontSize: '17px',
+          fontSize: '13px',
           fontWeight: 'bold'
         }
       },
@@ -779,7 +783,7 @@ window.onload = function() {
       title: {
         text: 'Total Valid Votes for Each Political Party Per Region(Parliament)',
         style: {
-          fontSize: '17px',
+          fontSize: '13px',
           fontWeight: 'bold'
         }
       },
@@ -888,7 +892,7 @@ window.onload = function() {
       title: {
         text: 'Total Valid Votes for Each Political Party Per Region(Presidential)',
         style: {
-          fontSize: '17px',
+          fontSize: '13px',
           fontWeight: 'bold'
         }
       },
@@ -987,7 +991,10 @@ window.onload = function() {
       },
       title: {
         text: 'Population Demographics',
-        align: 'left'
+        align: 'left',
+        style: {
+          fontSize: '13px'
+        }
       },
        subtitle: {
         text: '',
@@ -1099,7 +1106,7 @@ window.onload = function() {
         enabled: false
       },
       series: [{
-        name: 'Population Demographics',
+        name: 'Data',
         data: {{ graph1AY2P | safe}},
         color: '#84b046'
       }]
