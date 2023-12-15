@@ -391,6 +391,13 @@
         margin-top: 82vh;
         width: 73vw;
     }
+    #canta {
+        width: 26vw !important;
+    }
+    .pp2 {
+        width: 24vw;
+    }
+
     
 
 }
@@ -442,7 +449,7 @@
         margin-top: 42vh;
     }
     #container1 {
-        margin-left: -3px;
+        margin-left: -8px;
         width: 50vw;
         height: 40vh;
     }
@@ -457,12 +464,12 @@
         height: 40vh;
     }
     #container2 {
-        margin-left: -8px;
+        margin-left: -15px;
         width: 50vw;
         height: 40vh;
     }
     #container3 {
-        margin-left: -26vw;
+        margin-left: -27vw;
         width: 50vw;
         margin-top: 40vh;
     }
@@ -527,6 +534,18 @@
         font-size: 1.5vw;
     
     }
+    #canter {
+        position: absolute;
+        margin-left: -21vw;
+
+    }
+    #canta {
+        width: 13vw;
+    }
+    .pp2 {
+        width: 8vw;
+    }
+
 
 }
 @media screen and (min-width: 900px) {
@@ -601,7 +620,7 @@
     #map-container {
         width: 26vw;
         margin-left: -1.6vw;
-        height: 59.5vh;
+        height: 57vh;
     }
     #container3b {
         margin-left: -1.6vw;
@@ -609,7 +628,7 @@
         height: 57vh;
     }
     #map_name_1 {
-        height: 58.4vh;
+        height: 55.8vh;
     }
     #parliamentTotal {
         font-size: 1.5vw;
@@ -625,6 +644,12 @@
         margin-bottom: 0vh;
         margin-right: 0vw;
         height: 19vh;
+    }
+    #canta {
+        width: 6.5vw;
+    }
+    .pp2 {
+        width: 4vw;
     }
 
 
