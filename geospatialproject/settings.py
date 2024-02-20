@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", config('SECRET_KEY'))
 DEBUG = os.environ.get("DEBUG", config('DEBUG'))
 
 #ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '.onrender.com','www.election-gh.com', 'https://www.election-gh.com', 'https://elections-gh.com']
-LLOWED_HOSTS = ['0.0.0.0:10000', 'localhost', 'electoral-dashboard-ghana.onrender.com']
+ALLOWED_HOSTS = ['0.0.0.0:10000', 'localhost', 'electoral-dashboard-ghana.onrender.com']
 
 
 # Application definition
