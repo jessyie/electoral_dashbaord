@@ -116,6 +116,21 @@ def initialise_chart(year = '2020', region='Ashanti'):
     df_grouped3z = df_grouped3.values.tolist()
     b = df_grouped3
 
+
+    # Add a new 'values' column containing the highest value for each region
+    df_grouped3['Values'] = df_grouped3[dfGroupG.columns[:37]].apply(max, axis=1)
+
+    # Create a new column "Winners" with the name of the column having the maximum value
+    df_grouped3['Winner'] = df_grouped3[dfGroupG.columns].idxmax(axis=1)
+
+    # Define a color mapping dictionary for each party
+    value_mapping = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped3['Values_map'] = df_grouped3['Winner'].map(value_mapping)
+
+    values_dict = df_grouped3.set_index("REGION")[["Values_map", "Winner"]]
+
     # // Do the sum operations of each region on each party for both offices Presidential (D)
     data1 = [dfGroupB, dfRegions2]
     dfMergeB = pd.concat(data1, axis=1, join='inner')
@@ -125,6 +140,16 @@ def initialise_chart(year = '2020', region='Ashanti'):
     graph3BY = df_grouped4.iloc[:,1:].values.tolist()
     graph3BX = df_grouped4['REGION'].values.tolist()
     df_grouped4z = df_grouped4.values.tolist()
+
+    df_grouped4['Winner'] = df_grouped4[dfGroupE.columns].idxmax(axis=1)
+
+    # Define a color mapping dictionary for each party
+    value_mappings = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped4['Values_map_4'] = df_grouped4['Winner'].map(value_mappings)
+
+    values_dict4 = df_grouped4.set_index("REGION")[["Values_map_4", "Winner"]]
 
 
     # ---------------------------------
@@ -194,6 +219,15 @@ def initialise_chart(year = '2020', region='Ashanti'):
     graph3AX_1A=df_grouped3_1A.CONSTITUENCY
     df_grouped3zP = df_grouped3_1A.values.tolist()
     #print(df_grouped3_1A.CONSTITUENCY)
+
+    df_grouped3_1A['Winner'] = df_grouped3_1A[dfGroupG1A.columns].idxmax(axis=1)
+
+    value_mappingConstA = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped3_1A['Values_map'] = df_grouped3_1A['Winner'].map(value_mappingConstA)
+
+    values_dictConstA = df_grouped3_1A.set_index("CONSTITUENCY")[["Values_map", "Winner"]]
     
     
     # // (D) Ashanti(Presidential) Do Total sum operations for each party on each constituency based on each region for both necessary offices (F) Parliament
@@ -210,6 +244,76 @@ def initialise_chart(year = '2020', region='Ashanti'):
     graph3AX_1B=df_grouped3_1B.CONSTITUENCY
     df_grouped3zP2 = df_grouped3_1B.values.tolist()
     #print(df_grouped3_1B.CONSTITUENCY)
+
+    df_grouped3_1B['Winner'] = df_grouped3_1B[dfGroupG1B.columns].idxmax(axis=1)
+
+    value_mappingConstB = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped3_1B['Values_map'] = df_grouped3_1B['Winner'].map(value_mappingConstB)
+
+    values_dictConstB = df_grouped3_1B.set_index("CONSTITUENCY")[["Values_map", "Winner"]]
+
+
+
+    #////////////////////////////////////////////////////////////////////////////////////
+
+
+    # JUST 2020 CONSTITUENCY INFORMATION UPDATED
+
+
+
+    #////////////////////////////////////////////////////////////////////////////////////
+
+
+     # // (D) Ashanti(Parliament) Do Total sum operations for each party on each constituency based on each region for both necessary offices (F) Parliament
+    dfGroup1ACONST2 = dfGroup.loc[:,'VALID_VOTES':'IND4'].replace(',','', regex=True) # Selecting specific columns and getting rid of the commas in the string
+    dfGroup1ACONST2 = dfGroup1ACONST2.apply(pd.to_numeric) # Converting all the string in the columns to integers
+    dfConstCONST2 = dfGroup[["CONSTITUENCY", "VALID_VOTES", "DISTRICT_CODE"]]
+    data1ACONST2 = [dfGroup1ACONST2, dfConstCONST2]
+    dfMerge1ACONST2 = pd.concat(data1ACONST2, axis=1, join='inner')
+    #print(df2)
+    dfGroupG1ACONST2 = dfMerge1ACONST2.loc[:,'NPP':'IND4'].replace(',','', regex=True)
+    dfGroupG1ACONST2 = dfGroupG1ACONST2.apply(pd.to_numeric)
+    df_grouped3_1ACONST2 = dfMerge1ACONST2.groupby(by="DISTRICT_CODE")[dfGroupG1ACONST2.columns[:37]].sum().reset_index()
+    graph3AY_1ACONST2 = df_grouped3_1ACONST2.iloc[:,1:]
+    graph3AX_1ACONST2=df_grouped3_1ACONST2.DISTRICT_CODE
+    df_grouped3zPCONST2 = df_grouped3_1ACONST2.values.tolist()
+    #print(df_grouped3_1A.CONSTITUENCY)
+
+    df_grouped3_1ACONST2['Winner'] = df_grouped3_1ACONST2[dfGroupG1ACONST2.columns].idxmax(axis=1)
+
+    value_mappingConstACONST2 = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped3_1ACONST2['Values_map'] = df_grouped3_1ACONST2['Winner'].map(value_mappingConstACONST2)
+
+    values_dictConstACONST2 = df_grouped3_1ACONST2.set_index("DISTRICT_CODE")[["Values_map", "Winner"]]
+    
+    
+    # // (D) Ashanti(Presidential) Do Total sum operations for each party on each constituency based on each region for both necessary offices (F) Parliament
+    dfGroup1BCONST2 = dfGroup2.loc[:,'VALID_VOTES':'IND4'].replace(',','', regex=True) # Selecting specific columns and getting rid of the commas in the string
+    dfGroup1BCONST2 = dfGroup1BCONST2.apply(pd.to_numeric) # Converting all the string in the columns to integers
+    dfConstBCONST2 = dfGroup2[["CONSTITUENCY", "VALID_VOTES", "DISTRICT_CODE"]]
+    data1BCONST2 = [dfGroup1BCONST2, dfConstBCONST2]
+    dfMerge1BCONST2 = pd.concat(data1BCONST2, axis=1, join='inner')
+    #print(df2)
+    dfGroupG1BCONST2 = dfMerge1BCONST2.loc[:,'NPP':'IND4'].replace(',','', regex=True)
+    dfGroupG1BCONST2 = dfGroupG1BCONST2.apply(pd.to_numeric)
+    df_grouped3_1BCONST2 = dfMerge1BCONST2.groupby(by="DISTRICT_CODE")[dfGroupG1BCONST2.columns[:37]].sum().reset_index()
+    graph3AY_1BCONST2 = df_grouped3_1BCONST2.iloc[:,1:]
+    graph3AX_1BCONST2=df_grouped3_1BCONST2.DISTRICT_CODE
+    df_grouped3zP2CONST2 = df_grouped3_1BCONST2.values.tolist()
+    #print(df_grouped3_1B.CONSTITUENCY)
+
+    df_grouped3_1BCONST2['Winner'] = df_grouped3_1BCONST2[dfGroupG1BCONST2.columns].idxmax(axis=1)
+
+    value_mappingConstBCONST2 = {'NPP': 10, 'NDC': 8, 'CPP': 5}
+
+    # Create a new 'colors' column based on the 'Winners' column
+    df_grouped3_1BCONST2['Values_map'] = df_grouped3_1BCONST2['Winner'].map(value_mappingConstBCONST2)
+
+    values_dictConstBCONST2 = df_grouped3_1BCONST2.set_index("DISTRICT_CODE")[["Values_map", "Winner"]]
 
     
 
@@ -233,15 +337,114 @@ def initialise_chart(year = '2020', region='Ashanti'):
     graph2BY = tSumD[0].values.astype(int).tolist()
     graph2BXP = tSumDP['index'].values.astype(str).tolist()
     graph2BYP = tSumDP[0].values.astype(int).tolist() 
-    graph3AY = df_grouped3.iloc[:,1:].values.astype(int).tolist()
+    #graph3AY = df_grouped3.iloc[:,1:].values.astype(int).tolist()
     graph3AX = df_grouped3['REGION'].values.tolist()
-    graph3BY = df_grouped4.iloc[:,1:].values.astype(int).tolist()
+    #graph3BY = df_grouped4.iloc[:,1:].values.astype(int).tolist()
     graph3BX = df_grouped4['REGION'].values.tolist()
     # gapa1AX = gapaSum['YEAR'].values.tolist()
     tSumCA = tSumC.values.tolist()
     tSumDA = tSumD.values.tolist()
     tSumCAP = tSumCP.values.tolist()
     tSumDAP = tSumDP.values.tolist()
+
+    GHMap2 = gpd.read_file(os.path.join(data_loc_str, 'images', 'ghana_regions16.geojson'))
+    GHMap = gpd.read_file(os.path.join(data_loc_str, 'images', 'ghana_regions.geojson'))
+    GHMapConst = gpd.read_file(os.path.join(data_loc_str, 'images', 'constituencies2020.geojson'))
+
+
+    # #_______________________________________
+
+
+    # #// Parliament year 2016 and below //
+
+
+    # #______________________________________
+
+    merged_GHMap2A_json = GHMap.merge(values_dict, left_on="region", right_index=True)
+
+    merged_GHMap2A = merged_GHMap2A_json.to_json()
+
+
+    # #// Presidential year 2016 and below //
+
+    merged2_GHMap2A_json = GHMap.merge(values_dict4, left_on="region", right_index=True)
+
+    merged2_GHMap2A = merged2_GHMap2A_json.to_json()
+
+
+    # #________________________________________
+
+
+    # #// Parliament year 2020 and beyond //
+
+
+    # #______________________________________
+
+
+
+    merged_GHMap2_json = GHMap2.merge(values_dict, left_on="region", right_index=True)
+
+    merged_GHMap2 = merged_GHMap2_json.to_json()
+
+
+    # #// Presidential year 2020 and beyond //
+
+    # #_______________________________________
+
+    merged2_GHMap2_json = GHMap2.merge(values_dict4, left_on="region", right_index=True)
+
+    merged2_GHMap2 = merged2_GHMap2_json.to_json()
+
+    #  #________________________________________
+
+
+    # #// Constituency Parliament year 2020 and beyond //
+
+
+    # #______________________________________
+
+
+
+    merged_GHMap2Const_json = GHMapConst.merge(values_dictConstA, left_on="Constituen", right_index=True)
+
+    merged_GHMap2Const = merged_GHMap2Const_json.to_json()
+
+
+
+
+    #/////////////////////////////////////////////////////
+
+    # JUST 2020 CONSTIYUENCY INFORMATION PARLIAMENT
+
+    merged_GHMap2Const_jsonCONST2 = GHMapConst.merge(values_dictConstACONST2, left_on="ConstCode", right_index=True)
+
+    merged_GHMap2ConstCONST2 = merged_GHMap2Const_jsonCONST2.to_json()
+
+    #/////////////////////////////////////////////////////
+
+    # #_______________________________________
+
+
+    # #// Constituency Presidential year 2020 and beyond //
+
+    # #_______________________________________
+
+    merged2_GHMap2Const_json = GHMapConst.merge(values_dictConstB, left_on="Constituen", right_index=True)
+
+    merged2_GHMap2Const = merged2_GHMap2Const_json.to_json()
+
+
+
+
+    #/////////////////////////////////////////////////////
+
+    # JUST 2020 CONSTIYUENCY INFORMATION PRESIDENTIAL
+
+    merged2_GHMap2Const_jsonCONST2 = GHMapConst.merge(values_dictConstBCONST2, left_on="ConstCode", right_index=True)
+
+    merged2_GHMap2ConstCONST2 = merged2_GHMap2Const_jsonCONST2.to_json()
+
+    #//////////////////////////////////////////////////////
 
      #________________________________
 
@@ -316,7 +519,15 @@ def initialise_chart(year = '2020', region='Ashanti'):
     'graph1AY2P' : graph1AY2P,
     'graph1BX2P' : graph1BX2P,
     'graph1BY2P' : graph1BY2P,
-    'dfGroupH' : dfGroupH
+    'dfGroupH' : dfGroupH,
+    'merged_GHMap2A' : merged_GHMap2A,
+    'merged2_GHMap2A' : merged2_GHMap2A,
+    'merged_GHMap2' : merged_GHMap2,
+    'merged2_GHMap2' : merged2_GHMap2,
+    'merged_GHMap2Const' : merged_GHMap2Const,
+    'merged2_GHMap2Const' : merged2_GHMap2Const,
+    'merged_GHMap2ConstCONST2' : merged_GHMap2ConstCONST2,
+    'merged2_GHMap2ConstCONST2' : merged2_GHMap2ConstCONST2
     
     }
     return context  

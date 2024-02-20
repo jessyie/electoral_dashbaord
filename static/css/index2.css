@@ -109,6 +109,9 @@
 {
     color: black;
 }
+.wrapper {
+    height: 100%;
+}
 #nano_1 {
     font-size: 14px;
      margin-right: 2px;
